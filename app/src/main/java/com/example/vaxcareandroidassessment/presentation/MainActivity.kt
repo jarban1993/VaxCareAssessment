@@ -10,6 +10,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.vaxcareandroidassessment.presentation.theme.VaxCareAndroidAssessmentTheme
 import com.example.vaxcareandroidassessment.presentation.book_list.BookListScreen
+import com.example.vaxcareandroidassessment.presentation.book_detail.BookDetailScreen
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -32,7 +33,7 @@ class MainActivity : ComponentActivity() {
                         composable(
                             route = Screen.BookDetailScreen.route + "/{bookId}"
                         ) {
-                            //BookDetailScreen()
+                            BookDetailScreen()
                         }
                     }
                 }

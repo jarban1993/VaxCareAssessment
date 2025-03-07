@@ -21,7 +21,7 @@ class GetBookUseCase @Inject constructor(
             val book = repository.getBook(bookId).toBookDetail()
             emit(Resource.Success<BookDetail>(book))
         } catch(e: HttpException){
-            emit(Resource.Error<BookDetail>(e.localizedMessage ?: "An unexpected error occured"))
+            emit(Resource.Error<BookDetail>(e.localizedMessage ?: "An unexpected error occurred"))
         } catch (e: IOException){
             emit(Resource.Error<BookDetail>("Couldn't reach server. Check your internet connection."))
         }

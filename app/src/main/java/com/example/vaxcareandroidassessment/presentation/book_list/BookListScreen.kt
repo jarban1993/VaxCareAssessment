@@ -31,7 +31,7 @@ fun BookListScreen(
                 BookListItem(
                     book = book,
                     onItemClick = {
-                        navController.navigate(Screen.BookDetailScreen.route + "/${book.id}")
+                        navController.navigate(Screen.BookDetailScreen.route + "/${book.id -1}")
                     }
                 )
             }
