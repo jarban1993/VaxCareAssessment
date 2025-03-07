@@ -1,5 +1,6 @@
 package com.example.vaxcareandroidassessment.data.remote.dto
 
+import com.example.vaxcareandroidassessment.data.local.BookInfoEntity
 import com.example.vaxcareandroidassessment.domain.model.Book
 import com.example.vaxcareandroidassessment.domain.model.BookDetail
 
@@ -30,4 +31,16 @@ fun BookDto.toBookDetail(): BookDetail {
         status = status,
         title = title
     )
+}
+
+fun BookDto.toBookEntity(): BookInfoEntity {
+    return BookInfoEntity(
+        id = id,
+        author = author,
+        fee = fee,
+        lastEdited = lastEdited,
+        status = status,
+        title = title
+    )
+
 }

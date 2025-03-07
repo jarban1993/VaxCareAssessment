@@ -1,5 +1,6 @@
 package com.example.vaxcareandroidassessment.presentation.book_list
 
+import androidx.annotation.VisibleForTesting
 import androidx.compose.runtime.State
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
@@ -23,7 +24,8 @@ class BookListViewModel @Inject constructor(
         getBooks()
     }
 
-    private fun getBooks() {
+    @VisibleForTesting
+    fun getBooks() {
         getBooksUseCase().onEach { result ->
             when (result) {
                 is Resource.Success -> {

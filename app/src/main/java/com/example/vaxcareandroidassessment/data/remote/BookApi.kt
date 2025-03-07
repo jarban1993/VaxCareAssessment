@@ -13,7 +13,6 @@ interface BookApi {
     companion object {
         fun create(baseUrl: String): BookApi {
             val retrofit = Retrofit.Builder()
-                // here we set the base url of our API
                 .baseUrl(baseUrl)
                 // add the JSON dependency so we can handle json APIs
                 .addConverterFactory(GsonConverterFactory.create())

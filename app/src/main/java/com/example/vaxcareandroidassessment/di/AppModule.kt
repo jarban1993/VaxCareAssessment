@@ -4,14 +4,16 @@ import android.app.Application
 import androidx.room.Room
 import com.example.vaxcareandroidassessment.common.Constants
 import com.example.vaxcareandroidassessment.data.local.BookInfoDb
+import com.example.vaxcareandroidassessment.data.local.Converters
 import com.example.vaxcareandroidassessment.data.remote.BookApi
 import com.example.vaxcareandroidassessment.data.repository.BookRepositoryImpl
+import com.example.vaxcareandroidassessment.data.util.GsonParser
 import com.example.vaxcareandroidassessment.domain.repository.BookRepository
+import com.google.gson.Gson
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
-import okhttp3.Cache
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import javax.inject.Singleton
@@ -23,8 +25,6 @@ object AppModule {
     @Provides
     @Singleton
     fun provideBookApi(): BookApi {
-        val cacheSize = 10 * 1024 * 1024L
-
         return Retrofit.Builder()
             .baseUrl(Constants.BASE_URL)
             .addConverterFactory(GsonConverterFactory.create())
@@ -34,8 +34,17 @@ object AppModule {
 
     @Provides
     @Singleton
-    fun provideBookRepository(api: BookApi): BookRepository {
-        return BookRepositoryImpl(api)
+    fun provideBookRepository(api: BookApi, db: BookInfoDb): BookRepository {
+        return BookRepositoryImpl(api, db.dao)
+    }
+
+    @Provides
+    @Singleton
+    fun provideBookInfoDatabase(app: Application): BookInfoDb {
+        return Room.databaseBuilder(
+            app, BookInfoDb::class.java, "book_db"
+        ).addTypeConverter(Converters(GsonParser(Gson())))
+            .build()
     }
 
 }
