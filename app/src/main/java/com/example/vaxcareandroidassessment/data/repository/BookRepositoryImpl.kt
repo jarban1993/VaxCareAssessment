@@ -3,7 +3,6 @@ package com.example.vaxcareandroidassessment.data.repository
 import com.example.vaxcareandroidassessment.data.local.BookInfoDao
 import com.example.vaxcareandroidassessment.data.remote.BookApi
 import com.example.vaxcareandroidassessment.data.remote.dto.BookDto
-import com.example.vaxcareandroidassessment.data.remote.dto.toBookDetail
 import com.example.vaxcareandroidassessment.data.remote.dto.toBookEntity
 import com.example.vaxcareandroidassessment.domain.repository.BookRepository
 import javax.inject.Inject
