@@ -19,6 +19,7 @@ class BookDetailViewModel @Inject constructor(
     savedStateHandle: SavedStateHandle
 ) : ViewModel() {
 
+    //state for book detail screen
     private val _state = mutableStateOf(BookDetailState())
     val state: State<BookDetailState> = _state
 
@@ -28,7 +29,7 @@ class BookDetailViewModel @Inject constructor(
         }
     }
 
-
+    //function to get a single book from use case
     private fun getBook(bookId: String) {
         getBookUseCase(bookId).onEach { result ->
             when(result) {

@@ -24,6 +24,7 @@ object AppModule {
 
     @Provides
     @Singleton
+    //creates a single instance of the api
     fun provideBookApi(): BookApi {
         return Retrofit.Builder()
             .baseUrl(Constants.BASE_URL)
@@ -34,12 +35,14 @@ object AppModule {
 
     @Provides
     @Singleton
+    //creates a single instance of the repository
     fun provideBookRepository(api: BookApi, db: BookInfoDb): BookRepository {
         return BookRepositoryImpl(api, db.dao)
     }
 
     @Provides
     @Singleton
+    //creates a single instance of the database
     fun provideBookInfoDatabase(app: Application): BookInfoDb {
         return Room.databaseBuilder(
             app, BookInfoDb::class.java, "book_db"

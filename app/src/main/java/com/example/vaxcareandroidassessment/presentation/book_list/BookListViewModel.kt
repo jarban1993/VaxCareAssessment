@@ -17,6 +17,7 @@ class BookListViewModel @Inject constructor(
     private val getBooksUseCase: GetBooksUseCase
 ) : ViewModel() {
 
+    //state for book list screen
     private val _state = mutableStateOf(BookListState())
     val state: State<BookListState> = _state
 
@@ -24,6 +25,7 @@ class BookListViewModel @Inject constructor(
         getBooks()
     }
 
+    //function to get books from use case
     @VisibleForTesting
     fun getBooks() {
         getBooksUseCase().onEach { result ->

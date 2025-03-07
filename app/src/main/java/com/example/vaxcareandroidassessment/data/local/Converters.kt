@@ -11,6 +11,7 @@ import com.google.gson.reflect.TypeToken
 class Converters(
     private val jsonParser: com.example.vaxcareandroidassessment.data.util.JsonParser
 ) {
+    //Book Converters
     @TypeConverter
     fun fromBooksJson(json: String): List<BookDetail> {
         return jsonParser.fromJson<ArrayList<BookDetail>>(
@@ -27,6 +28,7 @@ class Converters(
         ) ?: "[]"
     }
 
+    //Status Converters
     @TypeConverter
     fun fromStatusJson(status: Status?): String? {
         return Gson().toJson(status)

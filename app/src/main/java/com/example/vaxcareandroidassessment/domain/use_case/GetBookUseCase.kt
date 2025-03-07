@@ -13,6 +13,7 @@ import javax.inject.Inject
 class GetBookUseCase @Inject constructor(
     private val repository: BookRepository
 ) {
+    //Use case to fetch data from repository for a single book
     operator fun invoke(bookId: String): Flow<Resource<BookDetail>> = flow {
         try {
             emit(Resource.Loading<BookDetail>())

@@ -8,6 +8,7 @@ import androidx.room.TypeConverters
     entities = [BookInfoEntity::class],
     version = 1
 )
+//Use custom converter class
 @TypeConverters(Converters::class)
 abstract class BookInfoDb: RoomDatabase() {
     abstract val dao: BookInfoDao
